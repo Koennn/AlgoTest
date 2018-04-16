@@ -5,14 +5,16 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class TSPTest {
 
-    public static final int POINT_COUNT = 10;
+    public static final int POINT_COUNT = 20;
     public static final int GRID_SIZE = 10;
     public static final int AMOUNT = 1000;
 
     public static final Random RANDOM = ThreadLocalRandom.current();
 
-    private static double globalDistance;
-    private static long globalTime;
+    public static double globalDistance;
+    public static long globalTime;
+
+    public static List<Vector> route;
 
     public static void main(String[] args) {
         double avgDistance = 0;
@@ -42,6 +44,8 @@ public final class TSPTest {
     }
 
     public static void runSamples() {
+        route = new ArrayList<>();
+
         List<Vector> points = generatePoints();
         System.out.println(points);
 
@@ -50,6 +54,7 @@ public final class TSPTest {
         do {
             System.out.println("point: " + point);
             point = nextPoint(point, points);
+            route.add(point);
         } while (point != null);
 
         globalTime = System.currentTimeMillis() - time;
