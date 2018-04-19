@@ -4,8 +4,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class BPPTest {
 
     public static final int BOX_SIZE = 10;
-    public static final int LOAD_COUNT = 5;
-    public static final int AMOUNT = 100000;
+    public static final int LOAD_COUNT = 4;
+    public static final int AMOUNT = 3;
 
     public static final Random RANDOM = ThreadLocalRandom.current();
 
@@ -17,15 +17,9 @@ public final class BPPTest {
 
         long time = System.currentTimeMillis();
         testAlgo(0, samples);
-        System.out.println("time taken: " + (System.currentTimeMillis() - time) + "ms");
 
         time = System.currentTimeMillis();
         testAlgo(1, samples);
-        System.out.println("time taken: " + (System.currentTimeMillis() - time) + "ms");
-
-        time = System.currentTimeMillis();
-        testAlgo(2, samples);
-        System.out.println("time taken: " + (System.currentTimeMillis() - time) + "ms");
     }
 
     public static void testAlgo(int algo, Integer[][] samples) {
@@ -70,7 +64,7 @@ public final class BPPTest {
         }
 
         System.out.println();
-        System.out.println(algo == 0 ? "Best Fit Decreasing" : algo == 1 ? "First Fit" : "Custom");
+        System.out.println(algo == 0 ? "Best Fit" : algo == 1 ? "First Fit" : "Custom");
         System.out.println("average: " + average / AMOUNT);
         System.out.println("lowest: " + lowest);
         System.out.println("highest: " + highest);
